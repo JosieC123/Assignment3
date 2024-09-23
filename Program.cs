@@ -18,8 +18,26 @@ else
     List<string> Names = [];
     List<string> Descriptions = [];
     List<string> Species = [];
-    List<string> FirstAppearance = []; 
-    List<int> YearCreated = []; 
+    List<string> FirstAppearance = [];
+    List<int> YearCreated = [];
+
+    // to populate the lists with data, read from the data file
+    try
+    {
+        StreamReader sr = new(file);
+        // first line contains column headers
+        sr.ReadLine();
+        while (!sr.EndOfStream)
+        {
+            string? line = sr.ReadLine();
+            Console.WriteLine(line);
+        }
+        sr.Close();
+    }
+    catch (Exception ex)
+    {
+        logger.Error(ex.Message);
+    }
 
     string? choice;
     do
