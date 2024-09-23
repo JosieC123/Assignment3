@@ -94,8 +94,15 @@ else
                     string? CharacterFirstAppearance = Console.ReadLine();
 
                     Console.WriteLine("Enter Year Created:"); //year
-                    int? CharacterYearCreated = Convert.ToInt32(Console.ReadLine());
-                    Console.WriteLine($"{Id}, {Name}, {Description}, {CharacterSpecies}, {CharacterFirstAppearance}, {CharacterYearCreated}");
+                    try // check if input is a number
+                    {
+                        int? CharacterYearCreated = Convert.ToInt32(Console.ReadLine());
+                        Console.WriteLine($"{Id}, {Name}, {Description}, {CharacterSpecies}, {CharacterFirstAppearance}, {CharacterYearCreated}");
+                    }
+                    catch (FormatException)
+                    {
+                        logger.Error("Year must be a number");
+                    }
                 }
             }
             else
