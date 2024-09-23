@@ -11,6 +11,16 @@ if (!File.Exists(file))
 }
 else
 {
+    // create parallel lists of character details
+    // lists are used since we do not know number of lines of data
+    // ID, Name, Description, Species, First-Appearance, Year-Created
+    List<UInt64> Ids = [];
+    List<string> Names = [];
+    List<string> Descriptions = [];
+    List<string> Species = [];
+    List<string> FirstAppearance = []; 
+    List<int> YearCreated = []; 
+
     string? choice;
     do
     {
