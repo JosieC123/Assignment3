@@ -16,10 +16,10 @@ else
     // ID, Name, Description, Species, First-Appearance, Year-Created
     List<UInt64> Ids = [];
     List<string> Names = [];
-    List<string> Descriptions = [];
-    List<string> Species = [];
-    List<string> FirstAppearance = [];
-    List<int> YearCreated = [];
+    List<string?> Descriptions = [];
+    List<string?> Species = [];
+    List<string?> FirstAppearance = [];
+    List<int?> YearCreated = [];
 
     // to populate the lists with data, read from the data file
     try
@@ -97,7 +97,19 @@ else
                     try // check if input is a number
                     {
                         int? CharacterYearCreated = Convert.ToInt32(Console.ReadLine());
-                        Console.WriteLine($"{Id}, {Name}, {Description}, {CharacterSpecies}, {CharacterFirstAppearance}, {CharacterYearCreated}");
+                        // create file from data
+                        StreamWriter sw = new(file, true);
+                        sw.WriteLine($"{Id}, {Name}, {Description}, {CharacterSpecies}, {CharacterFirstAppearance}, {CharacterYearCreated}");
+                        sw.Close();
+                        // add new character details to Lists
+                        Ids.Add(Id);
+                        Names.Add(Name);
+                        Descriptions.Add(Description);
+                        Species.Add(CharacterSpecies);
+                        FirstAppearance.Add(CharacterFirstAppearance);
+                        YearCreated.Add(CharacterYearCreated);
+                        // log transaction
+                        logger.Info($"Character id {Id} added");
                     }
                     catch (FormatException)
                     {
