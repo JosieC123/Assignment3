@@ -8,7 +8,7 @@ class Character
 
     public string FirstAppearance {get;set;} = string.Empty;
 
-    public string YearCreated {get;set;} = string.Empty;
+    public int YearCreated {get;set;}
 
 
     public string Display()

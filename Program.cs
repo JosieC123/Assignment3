@@ -25,20 +25,22 @@ else
             string? line = sr.ReadLine();
             if (line is not null)
             {
+                Character character = new();
                 // character details are separated with comma(,)
                 string[] characterDetails = line.Split(',');
                 // 1st array element contains id
-                   //Ids.Add(UInt64.Parse(characterDetails[0]));
+                   character.Id = UInt64.Parse(characterDetails[0]);
                 // 2nd array element contains character name
-                   //Names.Add(characterDetails[1]);
+                   character.Name = characterDetails[1] ?? string.Empty;
                 // 3rd array element contains character description
-                   //Descriptions.Add(characterDetails[2]);
+                   character.Description = characterDetails[2] ?? string.Empty;
                 // 4th array element contains character species
-                   //Species.Add(characterDetails[3]);
+                   character.Species = characterDetails[3] ?? string.Empty;
                 // 5th array element contains character First Appearance
-                   //FirstAppearance.Add(characterDetails[4]);
+                   character.FirstAppearance = characterDetails[4] ?? string.Empty;
                 // 6th array element contains character Year Created
-                   //YearCreated.Add(int.Parse(characterDetails[5]));
+                   character.YearCreated = int.Parse(characterDetails[5]);
+                   characters.Add(character);
             }
         }
         sr.Close();
