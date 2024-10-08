@@ -65,15 +65,15 @@ else
             // Add Character
             Character character = new();
             Console.WriteLine("Enter new character name: ");
-            string? Name = Console.ReadLine();
+            character.Name = Console.ReadLine() ?? string.Empty;
 
-            if (!string.IsNullOrEmpty(Name))
+            if (!string.IsNullOrEmpty(character.Name))
             {
                 // check for duplicate name
                 List<string> LowerCaseNames = characters.ConvertAll(character => character.Name.ToLower());
-                if (LowerCaseNames.Contains(Name.ToLower()))
+                if (LowerCaseNames.Contains(character.Name.ToLower()))
                 {
-                    logger.Info($"Duplicate name {Name}");
+                    logger.Info($"Duplicate name {character.Name}");
                 }
                 else
                 {
@@ -92,7 +92,7 @@ else
                     Console.WriteLine("Enter Year Created:"); //year
                     try // check if input is a number
                     {
-                        int? CharacterYearCreated = Convert.ToInt32(Console.ReadLine());
+                        character.YearCreated = Convert.ToInt32(Console.ReadLine());
                         // create file from data
                         StreamWriter sw = new(file, true);
                         sw.WriteLine($"{character.Id}, {character.Name}, {character.Description}, {character.Species}, {character.FirstAppearance}, {character.YearCreated}");
